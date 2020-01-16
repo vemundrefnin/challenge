@@ -40,20 +40,37 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             ListTile(
-              title: Text('Item 1'),
+              leading: Icon(Icons.account_circle),
+              title: Text('Profile'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: Text('Item 2'),
+              title: Text('Add friends'),
+              leading: Icon(Icons.person_add),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Create challenge'),
+              leading: Icon(Icons.add_box),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Logout'),
+              leading: Icon(Icons.exit_to_app),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              leading: Icon(Icons.settings),
+              onTap: () {
                 Navigator.pop(context);
               },
             ),
