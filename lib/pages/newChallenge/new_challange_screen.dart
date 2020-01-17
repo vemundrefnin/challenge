@@ -1,5 +1,5 @@
 
-import 'package:challenge/pages/addChallenge/components/new_challange_form_body.dart';
+import 'package:challenge/pages/newChallenge/components/new_challange_form_body.dart';
 import 'package:flutter/material.dart';
 
 class NewChallengeForm extends StatefulWidget {

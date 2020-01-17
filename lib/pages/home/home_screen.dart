@@ -1,4 +1,5 @@
 import 'package:challenge/models/Post.dart';
+import 'package:challenge/widgets/challenge_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -25,59 +26,8 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.pushNamed(context, 'new-challenge');
         },
       ),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Challange'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Add friends'),
-              leading: Icon(Icons.person_add),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Create challenge'),
-              leading: Icon(Icons.add_box),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Logout'),
-              leading: Icon(Icons.exit_to_app),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Settings'),
-              leading: Icon(Icons.settings),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
-    );
+      drawer: ChallengeDrawer(),
+    ); 
   }
 
   Widget buildBody() {

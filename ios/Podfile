@@ -61,12 +61,12 @@ target 'Runner' do
     end
   end
 
-  # Keep pod path relative so it can be checked into Podfile.lock.
   pod 'Flutter', :path => 'Flutter'
+  # Keep pod path relative so it can be checked into Podfile.lock.
+  # Plugin Pods
   # facebook login
   pod 'FBSDKLoginKit'
 
-  # Plugin Pods
 
   # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
   # referring to absolute paths on developers' machines.

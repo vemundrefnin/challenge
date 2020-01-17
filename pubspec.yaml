@@ -25,6 +25,7 @@ dependencies:
   flutter_facebook_login: ^3.0.0
   firebase_auth: ^0.15.3
   fluro: ^1.4.0
+  google_sign_in: ^4.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -56,6 +57,9 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
+
+  assets:
+   - assets/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
