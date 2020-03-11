@@ -27,6 +27,8 @@ Future<String> signInWithGoogle() async {
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
 
+  assert(true);
+
   assert(user.email != null);
   assert(user.displayName != null);
   assert(user.photoUrl != null);
@@ -42,3 +44,12 @@ void signOutGoogle() async {
 
   print("User Sign Out");
 }
+
+
+
+Future<String> signInWithEmail(String email, String password) async {
+    AuthResult result = await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
+    FirebaseUser user = result.user;
+    return user.uid;
+  }

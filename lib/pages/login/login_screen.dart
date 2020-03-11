@@ -19,7 +19,8 @@ class _LoginState extends State<Login> {
             children: <Widget>[
               FlutterLogo(size: 150),
               SizedBox(height: 50),
-              _signInButton(),
+              _googleSignInButton(),
+              _testUserSignInButton(),
             ],
           ),
         ),
@@ -27,7 +28,40 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget _signInButton() {
+  Widget _testUserSignInButton() {
+    return OutlineButton(
+      splashColor: Colors.grey,
+      onPressed: () {
+        signInWithEmail('testuser@gmail.com', 'test123').whenComplete(() {
+          Navigator.pushReplacementNamed(context, 'home');
+        });
+      },
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      highlightElevation: 0,
+      borderSide: BorderSide(color: Colors.grey),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                'Sign in with test user',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.grey,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _googleSignInButton() {
     return OutlineButton(
       splashColor: Colors.grey,
       onPressed: () {

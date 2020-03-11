@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -19,6 +21,8 @@ class NewChallengeFormBody extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final format = DateFormat("yyyy-MM-dd");
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -117,29 +121,36 @@ class NewChallengeFormBody extends StatelessWidget {
                       // otherwise.
                       if (_formKey.currentState.validate()) {
                         // If the form is valid, display a Snackbar.
+                        // Scaffold.of(context).showSnackBar(
+                        //     SnackBar(content: Text('Processing Data')));
+
+                        
+
+                         _auth.currentUser().then((FirebaseUser user) {
+                          final userid = user.uid;
+                          print(userid);
+                          Firestore.instance.collection('challenges')
+                          .document(userid).collection('userChallenges')
+                          .add({
+                            "title": titleController.text,
+                            'end': DateTime.now(),
+                            'friends': friendsController.text,
+                            'intervall': intervallController.text,
+                            'description': descriptonController.text
+                            })
+                        .then((result) => {
                         Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text('Processing Data')));
-                        // new Future.delayed(const Duration(seconds: 1), () => "1");
-                        // Firestore.instance
-                        //   .collection('posts')
-                        //   .add({
-                        //     "title": myController.text,
-                        //     'end': DateTime.now(),
-                        //     'description': 'test'
-                        // })
-                        // .then((result) => {
-                        Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text('Challange created')));
-                        //   Navigator.pop(context),
+                            SnackBar(content: Text('Challange created'))),
+                            Navigator.pop(context),
                         //   // taskTitleInputController.clear(),
                         //   // taskDescripInputController.clear(),
-                        // })
-                        // .catchError((err) => {
-                        // print(err);
-                        // Scaffold.of(context)
-                        //   .showSnackBar(SnackBar(content: Text('Error, challange was not created')));
-                        // });
-
+                        })
+                        .catchError((err) => {
+                        Scaffold.of(context)
+                          .showSnackBar(SnackBar(content: Text('Error')))
+                        });
+                        });
+                        
                       }
                     },
                     child: Text('Submit'),

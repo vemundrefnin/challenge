@@ -1,5 +1,6 @@
 import 'package:challenge/pages/login/login_screen.dart';
 import 'package:challenge/pages/newChallenge/new_challange_screen.dart';
+import 'package:challenge/pages/profile/add_friend.dart';
 import 'package:challenge/pages/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
@@ -12,6 +13,7 @@ class FluroRouter {
   static Handler _newChallengeHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) => NewChallengeForm());
   static Handler _loginHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) => Login());
   static Handler _profileHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) => Profile());
+  static Handler _addFriendHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) => AddFriend());
   static void setupRouter() {
     router.define(
       'new-challenge',
@@ -28,6 +30,10 @@ class FluroRouter {
     router.define(
       'profile',
       handler: _profileHandler,
+    );
+    router.define(
+      'add-friend',
+      handler: _addFriendHandler,
     );
   }
 }

@@ -30,7 +30,7 @@ class ChallengeDrawer extends StatelessWidget {
             title: Text('Add friends'),
             leading: Icon(Icons.person_add),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, 'add-friend');
             },
           ),
           ListTile(
